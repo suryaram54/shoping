@@ -9,6 +9,7 @@ use App\Models\multipic;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\UploadedFile;
  use App\Http\Controllers\Storage;
+  use Auth;
  use File;
  use Image;
 
@@ -203,5 +204,11 @@ class BrandController extends Controller
  }
 
 
+  public function logout(){
+
+   Auth::logout();
+   return Redirect()->route('login')->with('success','user logout  Successfully');
+
+  }
 
 }

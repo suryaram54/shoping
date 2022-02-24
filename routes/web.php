@@ -19,7 +19,7 @@ use App\models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('/home', function () {
    echo 'surya prakash';
@@ -43,14 +43,15 @@ Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
 /////// multi image///
 
 Route::get('/multi_image/all', [BrandController::class, 'Multipic'])->name('multi_image');
-Route::POST('/multi/add', [BrandController::class, 'storeImg'])->name('store.image');
+Route::get('/userlogout', [BrandController::class, 'logout'])->name('user.logout');
 
 
+Route::POST('/brand/add', [BrandController::class, 'StoreBrand'])->name('store.brand');
 
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
-    $users=User::all();
-    return view('dashboard',compact('users'));
+    // $users=User::all();
+    return view('admin.index');
 })->name('dashboard');
